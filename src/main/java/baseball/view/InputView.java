@@ -1,5 +1,6 @@
 package baseball.view;
 
+import baseball.util.Convertor;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,16 +13,9 @@ public class InputView {
 
     public List<Integer> requestNumbers() {
         System.out.print(REQUEST_NUMBERS_MESSAGE);
-        System.out.println();
         String input = getInput();
         validateNumbersFormat(input);
-        List<Integer> numbers = new ArrayList<>();
-        for (int i=0; i<input.length(); i++) {
-            Character token = input.charAt(i);
-            Integer number = Character.getNumericValue(token);
-            numbers.add(number);
-        }
-        return numbers;
+        return Convertor.convertStrToList(input);
     }
 
     private void validateNumbersFormat(String input) {
@@ -55,7 +49,7 @@ public class InputView {
         System.out.println(REQUEST_RESTART_GAME_MESSAGE);
         String input = getInput();
         validateRestartFormat(input);
-        return Integer.parseInt(input);
+        return Convertor.convertStrToInt(input);
     }
 
     private void validateRestartFormat(String input) {

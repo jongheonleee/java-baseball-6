@@ -2,12 +2,12 @@ package baseball.model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import baseball.util.GeneratorImp;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 class GeneratorBallsTest {
 

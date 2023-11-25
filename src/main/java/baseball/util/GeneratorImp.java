@@ -1,5 +1,6 @@
-package baseball.model;
+package baseball.util;
 
+import baseball.util.Generator;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class GeneratorImp implements Generator {
