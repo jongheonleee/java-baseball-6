@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.util.Convertor;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -9,7 +10,7 @@ public class PlayerBalls {
     private final List<Ball> balls;
 
     public PlayerBalls(List<Integer> numbers) {
-        List<Ball> balls = convertBalls(numbers);
+        List<Ball> balls = Convertor.convertListToBalls(numbers);
         validate(balls);
         this.balls = balls;
     }
@@ -35,15 +36,6 @@ public class PlayerBalls {
         return LENGTH == balls.size();
     }
 
-    private static Ball convertIntToBall(Integer number) {
-        return new Ball(number);
-    }
-
-    private static List<Ball> convertBalls(List<Integer> numbers) {
-        return numbers.stream()
-                .map(PlayerBalls::convertIntToBall)
-                .collect(Collectors.toList());
-    }
 
     public Integer countStrike(List<Integer> numbers) {
         Integer count = 0;

@@ -1,7 +1,10 @@
 package baseball.util;
 
+import baseball.model.Ball;
+import baseball.model.PlayerBalls;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Convertor {
 
@@ -19,4 +22,13 @@ public class Convertor {
         return Integer.parseInt(input);
     }
 
+    public static Ball convertIntToBall(Integer number) {
+        return new Ball(number);
+    }
+
+    public static List<Ball> convertListToBalls(List<Integer> numbers) {
+        return numbers.stream()
+                .map(Convertor::convertIntToBall)
+                .collect(Collectors.toList());
+    }
 }
