@@ -1,16 +1,15 @@
 package baseball.model;
 
+import static baseball.constant.BallConstant.MAX_NUMBER;
+import static baseball.constant.BallConstant.MIN_NUMBER;
+import static baseball.constant.ComputerBallsConstant.LENGTH;
+
 import baseball.view.InputView;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class ComputerBalls {
-
-    private static final Integer MIN_NUMBER = 1;
-    private static final Integer MAX_NUMBER = 9;
-
-    private static final Integer LENGTH = 3;
 
     private final List<Integer> balls;
 
@@ -40,15 +39,15 @@ public class ComputerBalls {
     }
 
     private Boolean isIncludedInRangeNumber(Integer ball) {
-        return (MIN_NUMBER <= ball && ball <= MAX_NUMBER);
+        return (MIN_NUMBER.getSetting() <= ball && ball <= MAX_NUMBER.getSetting());
     }
 
     private Boolean isAvailableLength(List<Integer> balls) {
-        return LENGTH == balls.size();
+        return LENGTH.getSetting() == balls.size();
     }
 
     private Boolean isDuplicated(List<Integer> balls) {
-        return LENGTH != balls.stream()
+        return LENGTH.getSetting() != balls.stream()
                 .distinct()
                 .collect(Collectors.toList())
                 .size();
