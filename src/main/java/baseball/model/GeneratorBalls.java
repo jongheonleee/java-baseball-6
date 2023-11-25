@@ -1,14 +1,15 @@
 package baseball.model;
 
+import static baseball.constant.GeneratorBallsConstant.END_NUMBER;
+import static baseball.constant.GeneratorBallsConstant.LENGTH;
+import static baseball.constant.GeneratorBallsConstant.START_NUMBER;
+
 import baseball.util.Generator;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class GeneratorBalls {
-    private static final Integer START_RANGE = 1;
-    private static final Integer END_RANGE = 9;
-    private static final Integer LENGTH = 3;
 
     private final Generator generator;
 
@@ -26,8 +27,8 @@ public class GeneratorBalls {
 
     private List<Integer> generateNumbers() {
         List<Integer> numbers = new ArrayList<>();
-        for (int i=0; i<LENGTH; i++) {
-            Integer number = generator.pickNumber(START_RANGE, END_RANGE);
+        for (int i=0; i< LENGTH.getSetting(); i++) {
+            Integer number = generator.pickNumber(START_NUMBER.getSetting(), END_NUMBER.getSetting());
             numbers.add(number);
         }
         return numbers;
@@ -35,7 +36,7 @@ public class GeneratorBalls {
 
 
     private Boolean isDuplicated(List<Integer> numbers) {
-        return LENGTH != numbers.stream()
+        return LENGTH.getSetting() != numbers.stream()
                 .distinct()
                 .collect(Collectors.toList())
                 .size();
