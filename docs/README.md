@@ -62,6 +62,7 @@
 |   model    | ComputerBalls  |   컴퓨터가 선정하여 생성된 Ball 저장   |
 |   model    |  PlayerBalls   | 사용자가 입력하여 생성된 Ball 저장, 비교 |
 |   model    |  PlayerResult  |    사용자와 컴퓨터의 값을 비교한 결과    |
+|   model    | GeneratorBalls |   ComputerBalls 필드값 생성    |
 |            |                |                           |
 |    view    |   InputView    |        입력 관련 작업 처리        |
 |    view    |   OutputView   |        출력 관련 작업 처리        |
@@ -128,5 +129,6 @@
 [] 사용자가 입력한 값과 컴퓨터가 선정한 값 비교
 - 예외 처리 : 숫자 3개 입력 x, 1~9 이외의 숫자 -> IllegalArgumentException
 
+[] 1~9까지 임의의 숫자 3개 생성, 중복 제거
 
 [] 게임 재시작 기능
