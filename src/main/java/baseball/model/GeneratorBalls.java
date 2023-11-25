@@ -10,27 +10,31 @@ public class GeneratorBalls {
     private static final Integer END_RANGE = 9;
     private static final Integer LENGTH = 3;
 
-    public static List<Integer> generateUniqueNumbers() {
-        List<Integer> numbers =generateNumbers();
+    private final Generator generator;
+
+    public GeneratorBalls(Generator generator) {
+        this.generator = generator;
+    }
+
+    public List<Integer> generateUniqueNumbers() {
+        List<Integer> numbers = generateNumbers();
         while (isDuplicated(numbers)) {
             numbers = generateNumbers();
         }
         return numbers;
     }
 
-    private static List<Integer> generateNumbers() {
+    private List<Integer> generateNumbers() {
         List<Integer> numbers = new ArrayList<>();
         for (int i=0; i<LENGTH; i++) {
-            numbers.add(pickNumber());
+            Integer number = generator.pickNumber(START_RANGE, END_RANGE);
+            numbers.add(number);
         }
         return numbers;
     }
 
-    private static Integer pickNumber() {
-        return Randoms.pickNumberInRange(START_RANGE, END_RANGE);
-    }
 
-    private static Boolean isDuplicated(List<Integer> numbers) {
+    private Boolean isDuplicated(List<Integer> numbers) {
         return LENGTH != numbers.stream()
                 .distinct()
                 .collect(Collectors.toList())
