@@ -1,5 +1,7 @@
 package baseball.model;
 
-public class PlayerResult {
+import java.util.ArrayList;
+import java.util.Arrays;
 
+public enum PlayerResult {
 }
