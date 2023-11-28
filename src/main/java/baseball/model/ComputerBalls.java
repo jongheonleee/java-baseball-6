@@ -3,7 +3,9 @@ package baseball.model;
 import static baseball.constant.BallConstant.MAX_NUMBER;
 import static baseball.constant.BallConstant.MIN_NUMBER;
 import static baseball.constant.ComputerBallsConstant.LENGTH;
+import static baseball.exception.ComputerBallsExceptionMessage.*;
 
+import baseball.exception.ComputerBallsExceptionMessage;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,15 +21,15 @@ public class ComputerBalls {
 
     private void validate(List<Integer> balls) {
         if (!isIncludedInRangeNumbers(balls)) {
-            throw new IllegalArgumentException("[ERROR] 잘못된 값입니다.");
+            throw new IllegalArgumentException(WRONG_RANGE_NUMBER.getMessage());
         }
 
         if (!isAvailableLength(balls)) {
-            throw new IllegalArgumentException("[ERROR] 잘못된 길이입니다.");
+            throw new IllegalArgumentException(WRONG_COUNT_OF_NUMBER.getMessage());
         }
 
         if (isDuplicated(balls)) {
-            throw new IllegalArgumentException("[ERROR] 잘못된 값입니다.");
+            throw new IllegalArgumentException(DUPLICATED_NUMBER.getMessage());
         }
 
     }
