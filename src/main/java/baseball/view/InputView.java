@@ -1,5 +1,9 @@
 package baseball.view;
 
+import static baseball.util.CharacterUtil.COMMA;
+import static baseball.view.message.InputViewMessage.REQUEST_NUMBERS_MESSAGE;
+import static baseball.view.message.InputViewMessage.REQUEST_RESTART_GAME_MESSAGE;
+
 import baseball.util.Convertor;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
@@ -7,12 +11,8 @@ import java.util.List;
 
 public class InputView {
 
-    private static final String REQUEST_NUMBERS_MESSAGE = "숫자를 입력해주세요 : ";
-    private static final String REQUEST_RESTART_GAME_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-
-
     public List<Integer> requestNumbers() {
-        System.out.print(REQUEST_NUMBERS_MESSAGE);
+        System.out.print(REQUEST_NUMBERS_MESSAGE.getMessage());
         String input = getInput();
         validateNumbersFormat(input);
         return Convertor.convertStrToList(input);
@@ -29,7 +29,7 @@ public class InputView {
     }
 
     private Boolean isCommaAtEdge(String input) {
-        return input.charAt(0) == ',' || input.charAt(input.length()-1) == ',';
+        return input.charAt(0) == COMMA.getUnit() || input.charAt(input.length()-1) == COMMA.getUnit();
     }
 
     private Boolean isNotNumber(String input) {
@@ -46,7 +46,7 @@ public class InputView {
     }
 
     public Integer requestRestart() {
-        System.out.println(REQUEST_RESTART_GAME_MESSAGE);
+        System.out.println(REQUEST_RESTART_GAME_MESSAGE.getMessage());
         String input = getInput();
         validateRestartFormat(input);
         return Convertor.convertStrToInt(input);
@@ -62,8 +62,10 @@ public class InputView {
         }
     }
 
+    // 너무 하드 코딩 아님?
     private Boolean isRightRestartInput(String input) {
-        return input.equals("1") || input.equals("2");
+        Integer number = Convertor.convertStrToInt(input);
+        return 1 == number || 2 == number;
     }
 
     private String getInput() {

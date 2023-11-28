@@ -19,7 +19,11 @@ public class Convertor {
     }
 
     public static Integer convertStrToInt(String input) {
-        return Integer.parseInt(input);
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("잘못된 입력값입니다. 숫자를 입력해주세요");
+        }
     }
 
     public static Ball convertIntToBall(Integer number) {
