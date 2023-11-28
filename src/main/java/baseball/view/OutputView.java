@@ -1,9 +1,9 @@
 package baseball.view;
 
-public class OutputView {
+import static baseball.view.message.OutputViewMessage.GAME_END_MESSAGE;
+import static baseball.view.message.OutputViewMessage.GAME_START_MESSAGE;
 
-    private static final String GAME_START_MESSAGE = "숫자 야구 게임을 시작합니다.";
-    private static final String GAME_END_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+public class OutputView {
     private final StringBuilder stringBuilder;
 
     public OutputView(StringBuilder stringBuilder) {
@@ -12,7 +12,7 @@ public class OutputView {
 
     public void printGameStart() {
         initStringBuilder();
-        stringBuilder.append(GAME_START_MESSAGE);
+        stringBuilder.append(GAME_START_MESSAGE.getMessage());
         printStringBuilder();
     }
 
@@ -25,7 +25,7 @@ public class OutputView {
 
     public void printGameEnd() {
         initStringBuilder();
-        stringBuilder.append(GAME_END_MESSAGE);
+        stringBuilder.append(GAME_END_MESSAGE.getMessage());
         printStringBuilder();
     }
 
