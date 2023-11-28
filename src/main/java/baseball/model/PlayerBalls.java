@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.exception.PlayerBallsExceptionMessage;
 import baseball.util.Convertor;
 import java.util.List;
 import java.util.Set;
@@ -7,6 +8,8 @@ import java.util.stream.Collectors;
 
 import static baseball.constant.PlayerBallsConstant.INIT;
 import static baseball.constant.PlayerBallsConstant.LENGTH;
+import static baseball.exception.PlayerBallsExceptionMessage.*;
+
 public class PlayerBalls {
 
     private final List<Ball> balls;
@@ -19,11 +22,11 @@ public class PlayerBalls {
 
     private void validate(List<Ball> balls) {
         if (isDuplicated(balls)) {
-            throw new IllegalArgumentException("[ERROR] 잘못된 값입니다.");
+            throw new IllegalArgumentException(WRONG_COUNT_OF_NUMBER.getMessage());
         }
 
         if (!isAvailableLength(balls)) {
-            throw new IllegalArgumentException("[ERROR] 잘못된 길이입니다.");
+            throw new IllegalArgumentException(DUPLICATED_NUMBER.getMessage());
         }
     }
 
