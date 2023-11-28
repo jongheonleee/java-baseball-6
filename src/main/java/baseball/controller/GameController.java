@@ -14,7 +14,6 @@ public class GameController {
     private final OutputView outputView;
     private final GeneratorBalls generatorBalls;
     private ComputerBalls computerBalls;
-    private PlayerBalls playerBalls;
 
     public GameController(InputView inputView, OutputView outputView, GeneratorBalls generatorBalls) {
         this.inputView = inputView;
@@ -39,21 +38,18 @@ public class GameController {
         computerBalls = new ComputerBalls(numbers);
     }
 
-    private void createPlayerBalls() {
-        List<Integer> numbers = inputView.requestNumbers();
-        playerBalls = new PlayerBalls(numbers);
-    }
-
     private void generatePlayerResult() {
         PlayerResult result;
         do {
-            createPlayerBalls();
+            List<Integer> numbers = inputView.requestNumbers();
+            PlayerBalls playerBalls = new PlayerBalls(numbers);
             Integer strike = playerBalls.countStrike(computerBalls.getBalls());
             Integer ball = playerBalls.countBall(computerBalls.getBalls());
             result = PlayerResult.of(strike, ball);
             outputView.printPlayerResult(result.getMessage());
         } while (!result.equals(PlayerResult.THREE_STRIKE));
     }
+
 
     private Boolean restartGame() {
         outputView.printGameEnd();

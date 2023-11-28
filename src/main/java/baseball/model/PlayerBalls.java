@@ -45,13 +45,9 @@ public class PlayerBalls {
     public Integer countStrike(List<Integer> numbers) {
         Integer count = INIT.getSetting();
         for (int i=0; i<LENGTH.getSetting(); i++) {
-            Ball ball = balls.get(i);
             Integer number = numbers.get(i);
-            if (ball.isSameBall(number)) {
-                count++;
-            }
+            count += isNumberOnPosition(number, i);
         }
-
         return count;
     }
 
@@ -61,18 +57,21 @@ public class PlayerBalls {
 
     private Integer countStrikeAndBall(List<Integer> numbers) {
         Integer count = INIT.getSetting();
-
-        Set<Integer> numbersSet = numbers
-                .stream()
-                .collect(Collectors.toSet());
-
-        for (int i=0; i<LENGTH.getSetting(); i++) {
-            if (numbersSet.contains(balls.get(i))) {
-                count++;
-            }
+        for (Integer number : numbers) {
+            count += isNumber(number);
         }
-
         return count;
+    }
+
+    private Integer isNumber(Integer number) {
+        return Math.toIntExact(balls.stream()
+                .filter(ball -> ball.isSameBall(number))
+                .count());
+    }
+
+    private Integer isNumberOnPosition(Integer number, Integer position) {
+        Ball ball = balls.get(position);
+        return ball.isSameBall(number) == true ? 1 : 0;
     }
 
 
