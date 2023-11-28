@@ -1,6 +1,5 @@
-# ⚾️ 숫자 야구 게임 
+![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=300&section=header&text=여늘의%20숫자야구&fontSize=70&animation=fadeIn&fontAlignY=38&desc=우아한테크코스%206기%201주차%20미션%20숫자%20야구%20게임%20⚾️&descAlignY=51&descAlign=62)
 
-![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=300&section=header&text=여늘의%20숫자야구&fontSize=90&animation=fadeIn&fontAlignY=38&desc=우아한테크코스%206기%201주차%20%미션%20숫자야구%20게임%20⚾️&descAlignY=51&descAlign=62)
 ## 📢 프로젝트 소개 목차
 1. [프로젝트 한줄 요약](#프로젝트-한줄-요약)
 2. [프로젝트 구조도](#프로젝트-구조도)
