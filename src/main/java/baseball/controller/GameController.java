@@ -56,6 +56,7 @@ public class GameController {
     }
 
     private Boolean restartGame() {
+        outputView.printGameEnd();
         Integer answer = inputView.requestRestart();
         return answer == 1 ? true : false;
     }
