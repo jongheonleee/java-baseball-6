@@ -1,5 +1,7 @@
 package baseball.util;
 
+import static baseball.exception.ConvertorExceptionMessage.NOT_NUMBER;
+
 import baseball.model.Ball;
 import baseball.model.PlayerBalls;
 import java.util.ArrayList;
@@ -22,7 +24,7 @@ public class Convertor {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("잘못된 입력값입니다. 숫자를 입력해주세요");
+            throw new IllegalArgumentException(NOT_NUMBER.getMessage());
         }
     }
 
