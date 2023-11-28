@@ -1,5 +1,6 @@
 package baseball.view;
 
+import static baseball.exception.InputViewExceptionMessage.WRONG_INPUT_FORMAT;
 import static baseball.util.CharacterUtil.COMMA;
 import static baseball.view.message.InputViewMessage.REQUEST_NUMBERS_MESSAGE;
 import static baseball.view.message.InputViewMessage.REQUEST_RESTART_GAME_MESSAGE;
@@ -20,11 +21,11 @@ public class InputView {
 
     private void validateNumbersFormat(String input) {
         if (isCommaAtEdge(input)) {
-            throw new IllegalArgumentException("[ERROR] 잘못된 입력 형식입니다.");
+            throw new IllegalArgumentException(WRONG_INPUT_FORMAT.getMessage());
         }
 
         if (isNotNumber(input)) {
-            throw new IllegalArgumentException("[ERROR] 잘못된 입력 형식입니다.");
+            throw new IllegalArgumentException(WRONG_INPUT_FORMAT.getMessage());
         }
     }
 
@@ -54,15 +55,14 @@ public class InputView {
 
     private void validateRestartFormat(String input) {
         if (isNotNumber(input)) {
-            throw new IllegalArgumentException("[ERROR] 잘못된 입력 형식입니다.");
+            throw new IllegalArgumentException(WRONG_INPUT_FORMAT.getMessage());
         }
 
         if (!isRightRestartInput(input)) {
-            throw new IllegalArgumentException("[ERROR] 잘못된 입력 형식입니다.");
+            throw new IllegalArgumentException(WRONG_INPUT_FORMAT.getMessage());
         }
     }
 
-    // 너무 하드 코딩 아님?
     private Boolean isRightRestartInput(String input) {
         Integer number = Convertor.convertStrToInt(input);
         return 1 == number || 2 == number;
