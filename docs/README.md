@@ -1,13 +1,13 @@
-![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=300&section=header&text=여늘의%20숫자야구&fontSize=60&animation=fadeIn&fontAlignY=38&desc=우아한테크코스%206기%201주차%20미션%20숫자%20야구%20게임%20🏟&descAlignY=51&descAlign=62)
+![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=300&section=header&text=여늘의%20숫자야구&fontSize=60&animation=fadeIn&fontAlignY=38&desc=⚾️우아한테크코스%206기%201주차%20미션%20숫자%20야구%20게임%20🏟&descAlignY=51&descAlign=62)
 
 ## 📢 프로젝트 소개 목차
-1. [프로젝트 한줄 요약](#프로젝트-한줄-요약)
-2. [프로젝트 구조도](#프로젝트-구조도)
-3. [프로젝트 클래스 기능](#프로젝트-클래스-기능)
-4. [프로젝트 작동 흐름](#프로젝트-작동-흐름)
-5. [테스트케이스 결과](#테스트케이스-진행-결과)
-6. [기능 요구 사항 요약](#기능-요구-사항-요약)
-7. [기능 목록 개발 과정](#기능-목록-작성)
+1. [프로젝트 한줄 요약](#-프로젝트-한줄-요약)
+2. [프로젝트 구조도](#-프로젝트-구조도)
+3. [프로젝트 클래스 기능](#-프로젝트-클래스-기능)
+4. [프로젝트 작동 흐름](#-프로젝트-작동-흐름)
+5. [테스트케이스 결과](#-테스트-케이스-진행-결과)
+6. [기능 요구 사항 요약](#-기능-요구-사항-요약)
+7. [기능 목록 개발 과정](#-기능-목록-작성)
 
 <br>
 <br>
