@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static baseball.constant.PlayerBallsConstant.INIT;
 import static baseball.constant.PlayerBallsConstant.LENGTH;
 public class PlayerBalls {
 
@@ -39,12 +40,12 @@ public class PlayerBalls {
 
 
     public Integer countStrike(List<Integer> numbers) {
-        Integer count = 0;
+        Integer count = INIT.getSetting();
         for (int i=0; i<LENGTH.getSetting(); i++) {
             Ball ball = balls.get(i);
             Integer number = numbers.get(i);
             if (ball.isSameBall(number)) {
-                count += 1;
+                count++;
             }
         }
 
@@ -56,7 +57,7 @@ public class PlayerBalls {
     }
 
     private Integer countStrikeAndBall(List<Integer> numbers) {
-        Integer count = 0;
+        Integer count = INIT.getSetting();
 
         Set<Integer> numbersSet = numbers
                 .stream()
@@ -64,7 +65,7 @@ public class PlayerBalls {
 
         for (int i=0; i<LENGTH.getSetting(); i++) {
             if (numbersSet.contains(balls.get(i))) {
-                count += 1;
+                count++;
             }
         }
 

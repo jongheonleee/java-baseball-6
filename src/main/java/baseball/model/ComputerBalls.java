@@ -4,7 +4,6 @@ import static baseball.constant.BallConstant.MAX_NUMBER;
 import static baseball.constant.BallConstant.MIN_NUMBER;
 import static baseball.constant.ComputerBallsConstant.LENGTH;
 
-import baseball.view.InputView;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
