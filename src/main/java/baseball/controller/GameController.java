@@ -1,5 +1,7 @@
 package baseball.controller;
 
+import static baseball.model.PlayerResult.*;
+
 import baseball.model.ComputerBalls;
 import baseball.model.GeneratorBalls;
 import baseball.model.PlayerBalls;
@@ -13,7 +15,6 @@ public class GameController {
     private final InputView inputView;
     private final OutputView outputView;
     private final GeneratorBalls generatorBalls;
-    private ComputerBalls computerBalls;
 
     public GameController(InputView inputView, OutputView outputView, GeneratorBalls generatorBalls) {
         this.inputView = inputView;
@@ -23,36 +24,47 @@ public class GameController {
 
     public void play() {
         do {
-            gameProcess();
+            processGame();
         } while (restartGame());
     }
 
-    private void gameProcess() {
-        createComputerBalls();
-        generatePlayerResult();
+    private void processGame() {
+        ComputerBalls computerBalls = createComputerBalls();
+        PlayerResult playerResult = oneCycle(computerBalls);
+        while (!playerResult.equals(PlayerResult.THREE_STRIKE)) {
+            playerResult = oneCycle(computerBalls);
+        }
     }
 
-    private void createComputerBalls() {
+    private ComputerBalls createComputerBalls() {
         outputView.printGameStart();
         List<Integer> numbers = generatorBalls.generateUniqueNumbers();
-        computerBalls = new ComputerBalls(numbers);
+        ComputerBalls computerBalls = new ComputerBalls(numbers);
+        return computerBalls;
     }
 
-    private void generatePlayerResult() {
-        PlayerResult result;
-        do {
-            List<Integer> numbers = inputView.requestNumbers();
-            PlayerBalls playerBalls = new PlayerBalls(numbers);
-            Integer strike = playerBalls.countStrike(computerBalls.getBalls());
-            Integer ball = playerBalls.countBall(computerBalls.getBalls());
-            result = PlayerResult.of(strike, ball);
-            outputView.printPlayerResult(result.getMessage());
-        } while (!result.equals(PlayerResult.THREE_STRIKE));
+    private PlayerBalls createPlayerBalls() {
+        List<Integer> numbers = inputView.requestNumbers();
+        PlayerBalls playerBalls = new PlayerBalls(numbers);
+        return playerBalls;
+    }
+
+    private PlayerResult compareComputerBallsAndPlayerBalls(ComputerBalls computerBalls, PlayerBalls playerBalls) {
+        Integer strike = playerBalls.countStrike(computerBalls.getBalls());
+        Integer ball = playerBalls.countBall(computerBalls.getBalls());
+        return PlayerResult.of(strike, ball);
+    }
+
+    private PlayerResult oneCycle(ComputerBalls computerBalls) {
+        PlayerBalls playerBalls = createPlayerBalls();
+        PlayerResult playerResult = compareComputerBallsAndPlayerBalls(computerBalls, playerBalls);
+        outputView.printPlayerResult(playerResult.getMessage());
+        return playerResult;
     }
 
 
     private Boolean restartGame() {
-        outputView.printGameEnd();
+        outputView.printEndGame();
         Integer answer = inputView.requestRestart();
         return answer == 1;
     }

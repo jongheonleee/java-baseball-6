@@ -23,7 +23,7 @@ public class OutputView {
         printStringBuilder();
     }
 
-    public void printGameEnd() {
+    public void printEndGame() {
         initStringBuilder();
         stringBuilder.append(GAME_END_MESSAGE.getMessage());
         printStringBuilder();
